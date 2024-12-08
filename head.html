@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Multimodal Model</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Multimodal RAG System</h1>
+        <form id="uploadForm">
+            <label for="textInput">Enter Text:</label>
+            <textarea id="textInput" name="text" rows="4" cols="50" placeholder="Type your query here..."></textarea>
+            
+            <label for="fileInput" class="custom-file-label">Upload a Text File</label>
+            <input type="file" id="fileInput" name="file" accept=".txt,.doc,.docx,.pdf">
+            
+            <button type="submit" id="generateAnswerButton" class="action-button">Generate Answer</button>
+        </form>
+        <div id="responseSection">
+            <h2>Response:</h2>
+            <p id="responseText">Awaiting response...</p>
+        </div>
+    </div>
+
+    <div class="about-section">
+        <h2>About the Project</h2>
+        <p>
+            The Multimodal RAG System is an innovative solution that combines retrieval-augmented generation (RAG) with multimodal data processing.
+            It is designed to analyze and generate answers using text, images, and audio, making it ideal for applications in education, healthcare, and research.
+            By integrating advanced AI technologies, we aim to make knowledge more accessible and contextualized for everyone.
+        </p>
+    </div>
+
+    <div class="team-section">
+        <h2>Smile Team</h2>
+        <div class="team-member">
+            <h3>Arina Bratashenko</h3>
+            <p>Project Lead & AI Developer</p>
+        </div>
+        <div class="team-member">
+            <h3>Nikita Shamilyan</h3>
+            <a href="https://www.youtube.com/watch?v=0f6bF9_ONwU">Подробнее</a>
+            <p>Backend Developer</p>
+        </div>
+        <div class="team-member">
+            <h3>Pyhtin Ivan</h3>
+            <p>UX/UI Designer</p>
+        </div>
+    </div>
+
+    <script src="back.js"></script>
+
+    <script>
+        // Добавление анимации после выбора файла
+        document.querySelectorAll('input[type="file"]').forEach(input => {
+            input.addEventListener('change', function () {
+                if (this.files.length > 0) {
+                    const label = this.previousElementSibling;
+                    label.textContent = `File Selected: ${this.files[0].name}`;
+                    label.classList.add('file-selected');
+                    setTimeout(() => {
+                        label.classList.remove('file-selected');
+                    }, 2000); // Убираем анимацию через 2 секунды
+                }
+            });
+        });
+    </script>
+</body>
+</html>
